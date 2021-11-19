@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
+require 'k_log'
 require 'k_fileset/version'
+require 'k_fileset/whitelist'
+require 'k_fileset/path_entry'
+require 'k_fileset/glob_props'
+require 'k_fileset/glob_entry'
+require 'k_fileset/glob_info'
+require 'k_fileset/file_set'
 
 module KFileset
   # raise KFileset::Error, 'Sample message'
