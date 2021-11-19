@@ -31,6 +31,18 @@ Metrics/BlockLength:
     - shared_examples_for
     - transaction
 
+Metrics/AbcSize:
+  Exclude:
+    - "**/spec/**/*"
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "**/spec/**/*"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "**/spec/**/*"
+
 Metrics/MethodLength:
   Max: 25
 

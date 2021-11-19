@@ -1,0 +1,12 @@
+subject
+.builder/data_files/some-file.txt
+.builder/folder.txt/odd1.txt
+.builder/raw_data/deprecated/some-other-file.txt
+.builder/raw_data/some-file.txt
+target/deep/a/b/c/d/e/xmen.txt
+target/look-at-my-eyes.txt
+target/move-along.txt
+target/unwatched/nothing-to-see.txt
+target/unwatched/what-you-looking-at.txt
+target/watched/look-at-me.txt
+target/watched/over-here.txt
