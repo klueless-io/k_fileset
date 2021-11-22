@@ -45,11 +45,11 @@ module KFileset
     # is used and this is likely to be a relative path
     def safe_realpath
       # Cannot use @path because that instance variable is already used on Pathname
-      @safe_realpath ||= (exist? ? realpath.to_s : File.expand_path(self))
+      @safe_realpath ||= exist? ? realpath.to_s : File.expand_path(self)
     end
 
     def uri
-      URI(path)
+      URI::File.build(host: nil, path: safe_realpath)
     end
 
     def debug

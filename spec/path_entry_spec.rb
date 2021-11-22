@@ -75,7 +75,19 @@ RSpec.describe KFileset::PathEntry do
   context '.uri' do
     subject { instance.uri }
 
-    # fit { is_expected.to be_empty }
+    it { is_expected.not_to be_nil }
+
+    context '.uri.scheme' do
+      subject { instance.uri.scheme }
+    
+      it { is_expected.to eq('file') }
+    end
+
+    context '.uri.path' do
+      subject { instance.uri.path }
+    
+      it { is_expected.to eq(File.expand_path(path)) }
+    end
   end
 
   # context 'when path matches a real location' do
