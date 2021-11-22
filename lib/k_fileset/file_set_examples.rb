@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# NEED to convert this into RSPEC-USECASE
 module KFileset
   # FileSet will build up a list of files using Glob patterns.
   #

@@ -27,7 +27,7 @@ module KFileset
       return @key if defined? @key
 
       @key = begin
-        key = realpath.to_s
+        key = safe_realpath
         key = File.join(key, '.') if basename.to_s == '.' # if pathname.ends_with?('.')
         key
       end
@@ -40,11 +40,26 @@ module KFileset
     #   path_name.realpath(working_directory).to_s
     # end
 
-    def path
-      realpath.to_s
+    # Friendly path will return absolute path if the folder/file exists.
+    # If the file/folder does NOT exist then the the value of the underlying @path
+    # is used and this is likely to be a relative path
+    def safe_realpath
+      # Cannot use @path because that instance variable is already used on Pathname
+      @safe_realpath ||= (exist? ? realpath.to_s : File.expand_path(self))
+    end
+
+    def uri
+      URI(path)
     end
 
     def debug
+      log.kv 'key', key
+      log.kv 'working_directory', working_directory
+      log.kv 'safe_realpath', safe_realpath
+      log.kv 'to_path', to_path
+      log.kv 'cleanpath', cleanpath
+      log.line
+
       # puts "expand_path   : #{self.expand_path.to_s}"
       # puts "realdirpath   : #{self.realdirpath.to_s}"
       # puts "realpath      : #{self.realpath.to_s}"
@@ -54,13 +69,6 @@ module KFileset
       # puts "to_path       : #{self.to_path.to_s}"
       # puts "parent        : #{self.parent.to_s}"
       # log.line
-      log.kv 'key', key
-      log.kv 'working_directory', working_directory
-      log.kv 'pathname', path
-
-      log.kv 'to_path', to_path
-      log.kv 'cleanpath', cleanpath
-
       # log.kv 'directory?', directory?
       # log.kv 'root?', root?
       # log.kv 'absolute?', absolute?
@@ -80,8 +88,6 @@ module KFileset
       # log.kv 'dirname', dirname
       # log.kv 'to_path', to_path
       # log.kv 'size', size
-
-      log.line
     end
   end
 end
