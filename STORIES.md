@@ -20,11 +20,6 @@ As a Developer, I want to add or remove files based on configured pattern (inclu
 
 - Be able to add or remove files from the fileset
 
-Setup GitHub Action (test and lint)
-
-- Setup Rspec action
-- Setup RuboCop action
-
 ## Stories and tasks
 
 ### Tasks - completed
@@ -40,6 +35,11 @@ Setup project management, requirement and SCRUM documents
 - Setup user stories and tasks
 - Setup a project backlog
 - Setup an examples/usage document
+
+Setup GitHub Action (test and lint)
+
+- Setup Rspec action
+- Setup RuboCop action
 
 Setup new Ruby GEM
 

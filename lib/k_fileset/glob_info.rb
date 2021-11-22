@@ -11,7 +11,6 @@ module KFileset
       @glob += File::SEPARATOR if glob.end_with?(File::SEPARATOR)
       @flags = flags
 
-      # absolute_path_glob
       @exclusions = build_exclusions(exclude)
     end
 
@@ -40,7 +39,7 @@ module KFileset
 
     private
 
-    # Handles String based Glob, Regexp pattern or lambda expression
+    # Handle string based Glob, Regexp pattern or lambda expressions
     def build_exclusions(exclude)
       return [] if exclude.nil?
       return [exclude] if valid_exclusion?(exclude)
